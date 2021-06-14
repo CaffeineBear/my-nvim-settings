@@ -65,27 +65,27 @@ inoremap <C-A-p>     <Esc>:tabnew<CR>
 
 " # Copy to Clipboard by yank ------------------- 
 set clipboard+=unnamedplus
-let g:clipboard = {
-          \   'name': 'win32yank-wsl',
-          \   'copy': {
-          \      '+': 'win32yank -i --crlf',
-          \      '*': 'win32yank -i --crlf',
-          \    },
-          \   'paste': {
-          \      '+': 'win32yank -o --lf',
-          \      '*': 'win32yank -o --lf',
-          \   },
-          \   'cache_enabled': 0,
-          \ }
+" let g:clipboard = {
+"           \   'name': 'win32yank-wsl',
+"           \   'copy': {
+"           \      '+': 'win32yank -i --crlf',
+"           \      '*': 'win32yank -i --crlf',
+"           \    },
+"           \   'paste': {
+"           \      '+': 'win32yank -o --lf',
+"           \      '*': 'win32yank -o --lf',
+"           \   },
+"           \   'cache_enabled': 0,
+"           \ }
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
+" " WSL yank support
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+" if executable(s:clip)
+"     augroup WSLYank
+"         autocmd!
+"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
 
 " # Semicolon shortcut
 inoremap <leader>; <C-o>A;
